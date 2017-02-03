@@ -21,10 +21,32 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 
 class RegisterHandler(webapp2.RequestHandler):
+
     def get(self):
         template = JINJA_ENV.get_template('register.html.j2')
-        template_values = {}
-        self.response.write(template.render(template_values))
+        self.response.write(template.render({}))
+
+    def post(self):
+        template = JINJA_ENV.get_template('register.html.j2')
+        username = self.request.get('username').strip()
+        password = self.request.get('password').strip()
+        password_verify = self.request.get('password-verify').strip()
+        email = self.request.get('email').strip()
+
+        template_vars = {}
+        template_vars['errors'] = {}
+
+        if not username:
+            template_vars['errors']['username'] = 'Username is required'
+
+        if not password:
+            template_vars['errors']['password'] = 'Password is required'
+
+        if not password_verify:
+            template_vars['errors']['password_verify'] = 'You must verify your password'
+
+        self.response.write(template.render(template_vars))
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
