@@ -35,15 +35,30 @@ class RegisterHandler(webapp2.RequestHandler):
 
         template_vars = {}
         template_vars['errors'] = {}
+        template_vars['values'] = {}
 
         if not username:
             template_vars['errors']['username'] = 'Username is required'
+        else:
+            # test if username exists in db
+            template_vars['values']['username'] = username
 
         if not password:
             template_vars['errors']['password'] = 'Password is required'
 
         if not password_verify:
             template_vars['errors']['password_verify'] = 'You must verify your password'
+
+        if password and password_verify and password_verify != password:
+            template_vars['errors']['password_verify'] = 'Passwords dont match'
+
+        # validate email format
+
+        if email:
+            template_vars['values']['email'] = email
+
+        if len(template_vars['errors'].length) === 0:
+            # add new record
 
         self.response.write(template.render(template_vars))
 
