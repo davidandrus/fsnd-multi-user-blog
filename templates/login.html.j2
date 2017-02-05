@@ -1,23 +1,26 @@
 {% extends "base.html.j2" %}
 {% block content %}
   <div class="row">
-    <h1>Login</h1>
+    <h2>Login</h2>
     <form method="post" action="/login">
-      <div class="form-group{% if errors.username %} has-error{% endif %}">
-        <label for="username" required>Username</label>
-        <input class="form-control" type="text" id="username" name="username">
-        {% if errors.username %}
-          <p class="error bg-danger">{{errors.username}}</p>
-        {% endif %}
+      <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" placeholder="Username" id="username">
+          </div>
       </div>
-      <div class="form-group{% if errors.password %} has-error{% endif %}">
-        <label for="password" required>Password</label>
-        <input class="form-control" type="text" id="password" name="password">
-        {% if errors.password %}
-          <p class="error bg-danger">{{errors.password}}</p>
-        {% endif %}
+      <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" placeholder="Password" id="password">
+          </div>
       </div>
-      <button class="btn btn-primary" type="submit">Submit</button>
+      <br>
+      <div class="row">
+          <div class="form-group col-xs-12">
+              <button type="submit" class="btn btn-default">Send</button>
+          </div>
+      </div>
     </form>
   </div>
 {% endblock %}
