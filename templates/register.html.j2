@@ -1,37 +1,52 @@
 {% extends "base.html.j2" %}
 {% block content %}
-  <div class="row">
-    <h1>Register</h1>
-    <form method="post" action="/register">
-      <div class="form-group{% if errors.username %} has-error{% endif %}">
-        <label for="username" required>Username</label>
-        <input class="form-control" type="text" id="username" name="username" value="{{ values.username }}">
-        {% if errors.username %}
-          <p class="error bg-danger">{{errors.username}}</p>
-        {% endif %}
-      </div>
-      <div class="form-group{% if errors.password %} has-error{% endif %}">
-        <label for="password" required>Password</label>
-        <input class="form-control" type="text" id="password" name="password">
-        {% if errors.password %}
-          <p class="error bg-danger">{{errors.password}}</p>
-        {% endif %}
-      </div>
-      <div class="form-group{% if errors.password_verify %} has-error{% endif %}">
-        <label for="password-verify" required>Password Verify</label>
-        <input class="form-control" type="text" id="password-verify" name="password-verify">
-        {% if errors.password_verify %}
-          <p class="error bg-danger">{{errors.password_verify}}</p>
-        {% endif %}
-      </div>
-      <div class="form-group{% if errors.email %} has-error{% endif %}">
-        <label for="email">Email</label>
-        <input class="form-control" type="email" name="email" value="{{ values.email }}">
-        {% if errors.email %}
-          <p class="error bg-danger">{{errors.email}}</p>
-        {% endif %}
-      </div>
-      <button class="btn btn-primary" type="submit">Submit</button>
-    </form>
-  </div>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <h2>Register</h2>
+        <form method="post" action="/register" novalidate>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls {% if errors.username %} has-error{% endif %}">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" placeholder="Username" id="username" value="{{ values.username }}" required>
+                    {% if errors.username %}
+                      <p class="help-block text-danger">{{errors.username}}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls {% if errors.password %} has-error{% endif %}">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" id="password" required>
+                    {% if errors.password %}
+                      <p class="help-block text-danger">{{errors.password}}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls {% if errors.password_verify %} has-error{% endif %}">
+                    <label for="password-verify">Verify Password</label>
+                    <input type="password" class="form-control" placeholder="Verify Password" id="password-verify" required>
+                    {% if errors.password_verify %}
+                      <p class="help-block text-danger">{{errors.password_verify}}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls {% if errors.email %} has-error{% endif %}">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" placeholder="Email Address" id="email" value="{{ values.email }}">
+                    {% if errors.email %}
+                      <p class="help-block text-danger">{{errors.email}}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="form-group col-xs-12">
+                    <button type="submit" class="btn btn-default">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
