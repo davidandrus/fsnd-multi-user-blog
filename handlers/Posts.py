@@ -1,9 +1,9 @@
 from Base import BaseHandler
 
-class MainHandler(BaseHandler):
+class PostsHandler(BaseHandler):
     def get(self):
         template_values = {
             'title': 'It Works!'
         }
 
-        self.render('index.html.j2', template_values)
+        self.render('index', template_values)

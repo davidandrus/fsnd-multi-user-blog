@@ -8,7 +8,7 @@ class RegisterHandler(BaseHandler):
         template_vars['errors'] = {}
         template_vars['values'] = {}
 
-        self.render('register.html.j2', template_vars)
+        self.render('register', template_vars)
 
     def post(self):
         username = self.request.get('username').strip()
@@ -47,4 +47,4 @@ class RegisterHandler(BaseHandler):
             user.put()
             self.redirect("/")
 
-        self.render('register.html.j2', template_vars)
+        self.render('register', template_vars)
