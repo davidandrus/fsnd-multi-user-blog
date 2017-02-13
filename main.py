@@ -9,15 +9,15 @@ import webapp2
 from handlers.Posts import PostsHandler
 from handlers.Register import RegisterHandler
 from handlers.Login import LoginHandler
-from handlers.Post import PostAddHandler, PostViewHandler, PostDeleteHandler, PostEditHandler
+from handlers.Post import PostNewHandler, PostViewHandler, PostDeleteHandler, PostEditHandler
 
 
 app = webapp2.WSGIApplication([
     (r'/', PostsHandler),
     (r'/register', RegisterHandler),
     (r'/login', LoginHandler),
-    (r'/post/add', PostAddHandler),
-    (r'/post/\d+', PostViewHandler),
+    (r'/post/new', PostNewHandler),
+    (r'/post/(\d+)', PostViewHandler),
     (r'/post/\d+/delete', PostDeleteHandler),
     (r'/post/\d+/edit', PostEditHandler)
     #posts

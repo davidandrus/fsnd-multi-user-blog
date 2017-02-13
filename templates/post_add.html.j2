@@ -1,0 +1,46 @@
+{% extends "base.html.j2" %}
+{% block content %}
+  <div class="row">
+    <h2>Create New Post</h2>
+    <form method="post" action="/post/new">
+      <div class="row control-group">
+          <div class="form-group required col-xs-12 floating-label-form-group controls {% if errors.title %} has-error{% endif %}">
+              <label for="title">Title</label>
+              <input
+                type="text"
+                name="title"
+                class="form-control"
+                placeholder="Title"
+                id="title"
+                value="{{ values.content }}"
+              >
+              {% if errors.title %}
+                <p class="help-block text-danger">{{errors.title}}</p>
+              {% endif %}
+          </div>
+      </div>
+      <div class="row control-group">
+          <div class="form-group required col-xs-12 floating-label-form-group controls {% if errors.content %} has-error{% endif %}">
+              <label for="content required">Content</label>
+              <textarea
+                type="content"
+                name="content"
+                class="form-control post-input"
+                placeholder="Content"
+                id="Content"
+                value="{{values.content}}"
+              ></textarea>
+              {% if errors.content %}
+                <p class="help-block text-danger">{{errors.content}}</p>
+              {% endif %}
+          </div>
+      </div>
+      <br>
+      <div class="row">
+          <div class="form-group col-xs-12">
+              <button type="submit" class="btn btn-default">Send</button>
+          </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

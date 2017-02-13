@@ -1,12 +1,16 @@
-body {
-  padding: 20px;
+.form-group {
+  position: relative;
 }
 
-.error {
-  margin-top: 10px;
-  padding: 10px;
+.form-group.required:before {
+  content: '*';
+  display: block;
+  position: absolute;
+  top: 2em;
+  left: 3px;
+  color: #333;
 }
 
-label[required]:after {
-   content: ' *'
+textarea.post-input {
+  height: 300px;
 }
