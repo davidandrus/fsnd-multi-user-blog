@@ -1,5 +1,6 @@
 from google.appengine.ext import ndb
 
+# TODO make sure it is owned by a user
 class Post(ndb.Model):
     title = ndb.StringProperty(required = True)
     content = ndb.TextProperty(required = True)
