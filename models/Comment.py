@@ -1,8 +1,7 @@
 from google.appengine.ext import ndb
 
 # TODO make sure to associate with user
-class Post(ndb.Model):
-    title = ndb.StringProperty(required = True)
+class Comment(ndb.Model):
     content = ndb.TextProperty(required = True)
     created = ndb.DateTimeProperty(auto_now_add = True)
     modified = ndb.DateTimeProperty(auto_now = True)

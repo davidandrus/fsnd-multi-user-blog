@@ -2,17 +2,35 @@ from Base import BaseHandler
 
 from models.Post import Post
 
+# HELPERS ________________________________
+def get_post_vars(post_id):
+    post = Post.get_by_id(post_id)
+    errors = {}
+
+    template_vars = {
+        'id': post_id,
+        'title': post.title,
+        'content': post.content,
+        'errors': errors
+    }
+    return template_vars
+
+# HANDLERS ________________________________
 class PostViewHandler(BaseHandler):
+
     def get(self, *args):
         post_id = int(args[0])
-        post = Post.get_by_id(post_id)
-        errors = {}
+        self.render('post', get_post_vars(post_id))
 
-        self.render('post', {
-            'title': post.title,
-            'content': post.content,
-            'errors': errors
-        })
+    def post(self, *args):
+        post_id = int(args[0])
+        template_vars = get_post_vars(post_id)
+
+        if self.request.get('action') == 'add_comment':
+            
+
+        self.render('post', template_vars)
+
 
 class PostNewHandler(BaseHandler):
     def get(self):
