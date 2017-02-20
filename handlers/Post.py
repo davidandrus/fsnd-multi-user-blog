@@ -6,10 +6,12 @@ class PostViewHandler(BaseHandler):
     def get(self, *args):
         post_id = int(args[0])
         post = Post.get_by_id(post_id)
+        errors = {}
 
         self.render('post', {
             'title': post.title,
-            'content': post.content
+            'content': post.content,
+            'errors': errors
         })
 
 class PostNewHandler(BaseHandler):

@@ -5,5 +5,32 @@
     <div>
       {{content}}
     </div>
+    <!-- TODO: show comments list here -->
+    <h3>Comments</h3>
+    <p class="comments-empty-message">No Comments Yet</p>
+    <!-- TODO: only show when authorized -->
+    <h4>Add a Comment</h4>
+    <form method="post" action="/post/new">
+      <div class="row control-group">
+          <div class="form-group required col-xs-12 floating-label-form-group controls {% if errors.content %} has-error{% endif %}">
+              <label for="content required">Comment</label>
+              <textarea
+                name="comment"
+                class="form-control post-input"
+                placeholder="Comment"
+                id="Comment"
+              ></textarea>
+              <!-- {% if errors.comment %}
+                <p class="help-block text-danger">{{errors.comment}}</p>
+              {% endif %} -->
+          </div>
+      </div>
+      <br>
+      <div class="row">
+          <div class="form-group col-xs-12">
+              <button type="submit" class="btn btn-default">Save Comment</button>
+          </div>
+      </div>
+    </form>
   </div>
 {% endblock %}
